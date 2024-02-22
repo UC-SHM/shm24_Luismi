@@ -11,14 +11,23 @@
 
 using namespace std;
 
-#ifdef TEST
-int main(){
-	Rectangulo a, b(2,3);
-    //Rectangle r;
-    r.setParam(10, 2);
-    printf("\n Ultimo area: ")
-	std::cout << a.area() << " " << b.area() << std::endl;
-	return 0;
+#include <gtest/gtest.h>	// DEfiniciones de google test
+#include <gmock/gmock.h>
 
-}
-#endif
+
+// Verifica calculo area
+	TEST(Rectangulo, testArea1) {
+		Rectangulo r;
+
+		r.setParam(5, 3);
+		ASSERT_EQ(r.area(),15);
+	}
+
+// Verifica lastArea
+	TEST(Rectangulo, test_latArea) {
+		Rectangulo r;
+
+		r.setParam(6, 8);
+		int area=r.area();
+		ASSERT_EQ(area, r.lastArea);
+	}
